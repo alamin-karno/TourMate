@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Tour Mate</string>
     <string name="signup">Don\'t have an account ? <u>Sign up here.</u></string>
+    <string name="signin">Already have an account ? <u>Log in here.</u></string>
 </resources>

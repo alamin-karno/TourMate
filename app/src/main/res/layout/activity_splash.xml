@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    tools:context=".splash_screen.SplashActivity">
+
+    <ImageView
+
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/tour"
+        android:layout_centerInParent="true"/>
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/loading"
+        android:layout_centerInParent="true"
+        android:id="@+id/tourimage"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tour Mate"
+        android:textSize="30sp"
+        android:textColor="#D81B60"
+        android:textStyle="bold|italic"
+        android:layout_below="@+id/tourimage"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
