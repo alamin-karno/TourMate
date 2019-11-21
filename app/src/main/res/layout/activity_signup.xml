@@ -19,6 +19,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textAlignment="center"/>
+
         <EditText
             android:id="@+id/nameET"
             android:layout_width="match_parent"
@@ -33,20 +34,23 @@
             android:padding="15dp"
             android:inputType="text"
             android:layout_margin="10dp"/>
+
         <EditText
-            android:id="@+id/phonenoET"
+            android:id="@+id/emailET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone No"
+            android:hint="Email"
             android:textSize="16sp"
             android:textColorHint="#FFF"
             android:textColor="#FFF"
-            android:drawableLeft="@drawable/phone"
+            android:drawableLeft="@drawable/email"
             android:drawablePadding="5dp"
             android:background="@drawable/fieldbg"
             android:padding="15dp"
-            android:inputType="phone"
+            android:inputType="textEmailAddress"
             android:layout_margin="10dp"/>
+
+
         <EditText
             android:id="@+id/passwordET"
             android:layout_width="match_parent"
@@ -61,26 +65,54 @@
             android:padding="15dp"
             android:inputType="textPassword"
             android:layout_margin="10dp"/>
-        <Button
-            android:id="@+id/signupBTN"
+        <EditText
+            android:id="@+id/confirmpasswordET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Create Account"
+            android:hint="Confirm Password"
+            android:drawableLeft="@drawable/lock"
+            android:drawablePadding="5dp"
+            android:textColorHint="#FFF"
+            android:textColor="#FFF"
             android:textSize="16sp"
-            android:textColor="#FFF"
+            android:background="@drawable/fieldbg"
             android:padding="15dp"
-            android:background="@drawable/btnbg"
-            android:textAllCaps="false"
+            android:inputType="textPassword"
             android:layout_margin="10dp"/>
-        <TextView
-            android:layout_marginTop="15dp"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/signin"
-            android:textStyle="bold"
-            android:textColor="#FFF"
-            android:textAlignment="center"
-            android:onClick="onSignin"/>
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/signupBTN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Create Account"
+                android:textSize="16sp"
+                android:textColor="#FFF"
+                android:padding="15dp"
+                android:background="@drawable/btnbg"
+                android:textAllCaps="false"
+                android:layout_margin="10dp"/>
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:padding="5dp"
+                android:layout_margin="10dp"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+
     </LinearLayout>
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/signin"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        android:textAlignment="center"
+        android:onClick="onSignin"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
