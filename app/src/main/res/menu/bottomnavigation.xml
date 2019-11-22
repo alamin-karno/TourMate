@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Trips"
+        android:icon="@drawable/bus"
+        android:id="@+id/nav_trips"/>
+    <item
+        android:title="Memories"
+        android:icon="@drawable/camera"
+        android:id="@+id/nav_memories"/>
+    <item
+        android:title="Wallet"
+        android:icon="@drawable/walate"
+        android:id="@+id/nav_wallet"/>
+
+</menu>
