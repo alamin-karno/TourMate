@@ -39,6 +39,7 @@ public class SignupActivity extends AppCompatActivity {
         init();
 
         SignUpAction();
+
     }
 
     private void SignUpAction() {
@@ -146,5 +147,12 @@ public class SignupActivity extends AppCompatActivity {
     public void onSignin(View view) {
         Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed(){
+        startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+        finish();
     }
 }

@@ -108,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("email",email);
                     editor.putString("password",password);
                     editor.apply();
-
                     finish();
                 }
 
@@ -134,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onSignup(View view) {
         startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+        finish();
     }
 
     public void fogotpass(View view) {
