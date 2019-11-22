@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,7 +25,10 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginBTN;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
-    private String email,password;
+    private String email = null,password= null;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private RelativeLayout loginlayout,loadingIV;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +36,27 @@ public class LoginActivity extends AppCompatActivity {
 
         init();
 
+        autoLogin();
+
         loginAction();
+    }
+
+    private void autoLogin() {
+        sharedPreferences = getSharedPreferences("userInfo",MODE_PRIVATE);
+        email = sharedPreferences.getString("email",null);
+        password = sharedPreferences.getString("password",null);
+
+        loadingIV.setVisibility(View.VISIBLE);
+        loginlayout.setVisibility(View.INVISIBLE);
+
+        if(email == null && password == null){
+            loadingIV.setVisibility(View.INVISIBLE);
+            loginlayout.setVisibility(View.VISIBLE);
+            loginAction();
+        }
+        else {
+            login(email,password);
+        }
     }
 
     private void loginAction() {
@@ -68,14 +93,22 @@ public class LoginActivity extends AppCompatActivity {
         loginBTN.setVisibility(View.VISIBLE);
     }
 
-    private void login(String email, String password) {
+    private void login(final String email, final String password) {
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(LoginActivity.this, "Login Successful.", Toast.LENGTH_SHORT).show();
+
                     startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     progressBar.setVisibility(View.INVISIBLE);
+
+                    sharedPreferences = getSharedPreferences("userInfo",MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+                    editor.putString("email",email);
+                    editor.putString("password",password);
+                    editor.apply();
+
                     finish();
                 }
 
@@ -95,6 +128,8 @@ public class LoginActivity extends AppCompatActivity {
         loginBTN = findViewById(R.id.loginBTN);
         progressBar = findViewById(R.id.progressBar);
         firebaseAuth = FirebaseAuth.getInstance();
+        loginlayout = findViewById(R.id.loginLayout);
+        loadingIV = findViewById(R.id.loadingIV);
     }
 
     public void onSignup(View view) {
