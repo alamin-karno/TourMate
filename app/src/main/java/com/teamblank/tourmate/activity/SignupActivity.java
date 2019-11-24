@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.teamblank.tourmate.R;
 
@@ -31,6 +32,7 @@ public class SignupActivity extends AppCompatActivity {
     private String name,email,password,confpass;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
+    private FirebaseFirestore firebaseFirestore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,7 +101,7 @@ public class SignupActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(SignupActivity.this, "Account Create Successfully.", Toast.LENGTH_SHORT).show();
 
-                    String userID = firebaseAuth.getCurrentUser().getUid();
+                    final String userID = firebaseAuth.getCurrentUser().getUid();
                     DatabaseReference userRef = databaseReference.child("users").child(userID);
                     HashMap<String,Object> userInfo = new HashMap<>();
                     userInfo.put("Name",name);
@@ -110,10 +112,28 @@ public class SignupActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                startActivity(new Intent(SignupActivity.this,LoginActivity.class));
-                                progressBar.setVisibility(View.INVISIBLE);
-                                finish();
+                                String token = FirebaseInstanceId.getInstance().getToken();
+
+                                HashMap<String,Object> tokenMap = new HashMap<>();
+                                tokenMap.put("TokenID",token);
+
+                                firebaseFirestore.collection("users").document(userID).set(tokenMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            startActivity(new Intent(SignupActivity.this,LoginActivity.class));
+                                            progressBar.setVisibility(View.INVISIBLE);
+                                            finish();
+                                        }
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(SignupActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -142,6 +162,7 @@ public class SignupActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
     public void onSignin(View view) {

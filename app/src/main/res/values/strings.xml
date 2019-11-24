@@ -4,4 +4,5 @@
     <string name="signin">Already have an account ? <u>Log in here.</u></string>
     <string name="reset_password">Please enter your email address you use for sign up <b>Tour Mate</b> and we\'ll send you an instruction on this email to reset your password.</string>
     <string name="forgot_pass">Forgot your password ? <u>Click here.</u></string>
+    <string name="default_notification_channel_id">Notification</string>
 </resources>
