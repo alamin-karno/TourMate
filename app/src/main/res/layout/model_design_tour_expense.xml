@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/triptitleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trip Title"
+                android:textSize="24sp"
+                android:textColor="#FFF"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+                <TextView
+                    android:id="@+id/startloactionTV"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="match_parent"
+                    android:text="Gazipur"
+                    android:textColor="#FFF"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".2"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/plane"/>
+                <TextView
+                    android:id="@+id/locationtripTV"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="match_parent"
+                    android:text="Cox's Bazar"
+                    android:textSize="22sp"
+                    android:textColor="#FFF"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/startdateTV"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="match_parent"
+                    android:text="Trip Start Date"
+                    android:drawableLeft="@drawable/date"
+                    android:textColor="#FFF"
+                    android:drawablePadding="5dp"
+                    android:layout_margin="5dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".2"
+                    android:text="To"
+                    android:textColor="#FFF"
+                    android:layout_margin="5dp"
+                    android:textAlignment="center"/>
+                <TextView
+                    android:id="@+id/enddateTV"
+                    android:layout_width="0dp"
+                    android:layout_weight=".4"
+                    android:layout_height="match_parent"
+                    android:text="Trip End Date"
+                    android:textColor="#FFF"
+                    android:drawableLeft="@drawable/date"
+                    android:drawablePadding="5dp"
+                    android:layout_margin="5dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tripdetailsTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Discription"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="#FFF"
+                android:layout_margin="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="5dp"
+                android:background="#FFF"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/tk"/>
+                <TextView
+                    android:id="@+id/tripbudgetTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFF"
+                    android:layout_margin="10dp"
+                    android:textAlignment="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
