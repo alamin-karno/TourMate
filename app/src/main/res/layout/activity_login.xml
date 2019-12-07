@@ -67,7 +67,7 @@
             android:drawablePadding="5dp"
             android:background="@drawable/fieldbg"
             android:padding="15dp"
-            android:inputType="phone"
+            android:inputType="textEmailAddress"
             android:layout_margin="10dp"/>
         <EditText
             android:id="@+id/passwordET"

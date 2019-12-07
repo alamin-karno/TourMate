@@ -8,12 +8,12 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="12dp"
+        app:cardCornerRadius="25dp"
         android:layout_margin="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="#FD91B8"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/triptitleTV"
@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:text="Trip Title"
                 android:textSize="24sp"
-                android:textColor="#FFF"
+                android:textColor="#000"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:layout_marginTop="10dp"/>
@@ -36,7 +36,6 @@
                     android:layout_weight=".4"
                     android:layout_height="match_parent"
                     android:text="Gazipur"
-                    android:textColor="#FFF"
                     android:textSize="22sp"
                     android:textStyle="bold"
                     android:textAlignment="center"/>
@@ -52,7 +51,6 @@
                     android:layout_height="match_parent"
                     android:text="Cox's Bazar"
                     android:textSize="22sp"
-                    android:textColor="#FFF"
                     android:textStyle="bold"
                     android:textAlignment="center"/>
             </LinearLayout>
@@ -67,7 +65,7 @@
                     android:layout_height="match_parent"
                     android:text="Trip Start Date"
                     android:drawableLeft="@drawable/date"
-                    android:textColor="#FFF"
+                    android:textColor="#000"
                     android:drawablePadding="5dp"
                     android:layout_margin="5dp"/>
                 <TextView
@@ -75,7 +73,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight=".2"
                     android:text="To"
-                    android:textColor="#FFF"
+                    android:textColor="#000"
                     android:layout_margin="5dp"
                     android:textAlignment="center"/>
                 <TextView
@@ -84,7 +82,7 @@
                     android:layout_weight=".4"
                     android:layout_height="match_parent"
                     android:text="Trip End Date"
-                    android:textColor="#FFF"
+                    android:textColor="#000"
                     android:drawableLeft="@drawable/date"
                     android:drawablePadding="5dp"
                     android:layout_margin="5dp"/>
@@ -97,7 +95,6 @@
                 android:text="Discription"
                 android:textSize="16sp"
                 android:textStyle="italic"
-                android:textColor="#FFF"
                 android:layout_margin="10dp"/>
             <View
                 android:layout_width="match_parent"
@@ -108,7 +105,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:layout_margin="5dp"
+                android:padding="5dp">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -121,7 +120,6 @@
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="#FFF"
-                    android:layout_margin="10dp"
                     android:textAlignment="center"/>
             </LinearLayout>
         </LinearLayout>
