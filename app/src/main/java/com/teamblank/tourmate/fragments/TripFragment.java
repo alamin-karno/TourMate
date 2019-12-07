@@ -1,6 +1,7 @@
 package com.teamblank.tourmate.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.teamblank.tourmate.R;
+import com.teamblank.tourmate.activity.AddTripActivity;
 import com.teamblank.tourmate.adapters.TripAdapter;
 import com.teamblank.tourmate.model_class.Trip;
 
@@ -37,6 +39,8 @@ public class TripFragment extends Fragment {
 
         init(view);
 
+        addTrip();
+
         tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
         tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
         tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
@@ -47,6 +51,16 @@ public class TripFragment extends Fragment {
         tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
         adapter.notifyDataSetChanged();
         return view;
+    }
+
+    private void addTrip() {
+        addtripfavicon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AddTripActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void init(View view) {

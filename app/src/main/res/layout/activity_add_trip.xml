@@ -40,7 +40,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/nameET"
+            android:id="@+id/tripnameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -55,15 +55,15 @@
             android:textColorHint="#FFF"
             android:textSize="16sp" />
         <EditText
-            android:id="@+id/tripstartlocationnameET"
+            android:id="@+id/tripstartlocationET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/fieldbg"
-            android:drawableLeft="@drawable/bus"
+            android:drawableLeft="@drawable/myloaction"
             android:drawablePadding="5dp"
-            android:hint="Trip name"
+            android:hint="Trip Start Location"
             android:inputType="text"
             android:padding="15dp"
             android:textColor="#FFF"
@@ -76,9 +76,9 @@
             android:layout_margin="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/fieldbg"
-            android:drawableLeft="@drawable/bus"
+            android:drawableLeft="@drawable/location"
             android:drawablePadding="5dp"
-            android:hint="Trip name"
+            android:hint="Trip Location"
             android:inputType="text"
             android:padding="15dp"
             android:textColor="#FFF"
@@ -91,15 +91,83 @@
             android:layout_margin="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/fieldbg"
-            android:drawableLeft="@drawable/bus"
+            android:drawableLeft="@drawable/details"
             android:drawablePadding="5dp"
-            android:hint="Trip name"
+            android:hint="Trip Details (Optional)"
             android:inputType="text"
-            android:padding="40dp"
+            android:paddingTop="15dp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="40dp"
             android:textColor="#FFF"
             android:textColorHint="#FFF"
             android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/tripstartDateBTN"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fieldbg"
+                android:drawableLeft="@drawable/date"
+                android:drawablePadding="5dp"
+                android:hint="Trip Start Date"
+                android:inputType="date"
+                android:padding="15dp"
+                android:textColor="#FFF"
+                android:textColorHint="#FFF"
+                android:textSize="16sp" />
+            <Button
+                android:id="@+id/tripendDateBTN"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/fieldbg"
+                android:drawableLeft="@drawable/date"
+                android:drawablePadding="5dp"
+                android:hint="Trip End Date"
+                android:inputType="date"
+                android:padding="15dp"
+                android:textColor="#FFF"
+                android:textColorHint="#FFF"
+                android:textSize="16sp" />
+        </LinearLayout>
 
+        <EditText
+            android:id="@+id/tripBudgetET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fieldbg"
+            android:drawableLeft="@drawable/tk"
+            android:drawablePadding="5dp"
+            android:hint="Trip Budget"
+            android:inputType="numberDecimal"
+            android:padding="15dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF"
+            android:textSize="16sp" />
+        <Button
+            android:id="@+id/addTripBTN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btnbg"
+            android:drawablePadding="5dp"
+            android:hint="Add Your Trip"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColor="#FFF"
+            android:textColorHint="#FFF"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </RelativeLayout>
