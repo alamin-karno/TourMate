@@ -6,6 +6,20 @@ public class Trip {
     public Trip() {
     }
 
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public Trip(String triptitle, String startlocation, String triplocation, String startdate, String enddate, String tripdetails, String tripbudget) {
+        this.triptitle = triptitle;
+        this.startlocation = startlocation;
+        this.triplocation = triplocation;
+        this.startdate = startdate;
+        this.enddate = enddate;
+        this.tripdetails = tripdetails;
+        this.tripbudget = tripbudget;
+    }
+
     public Trip(String userid, String triptitle, String startlocation, String triplocation, String startdate, String enddate, String tripdetails, String tripbudget) {
         this.userid = userid;
         this.triptitle = triptitle;

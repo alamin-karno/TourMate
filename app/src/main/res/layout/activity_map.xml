@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".activity.MapActivity">
+
+    <LinearLayout
+        android:id="@+id/topL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/TF_location"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".8"
+            android:hint="Search Places"
+            android:padding="10dp"
+            android:background="@drawable/bg_search"/>
+        <ImageView
+            android:id="@+id/B_search"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight=".2"
+            android:src="@drawable/search"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/MidL"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/topL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/B_restaurants"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_weather"
+            android:text="Resturent"
+            android:textColor="#D3FFFFFF"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/B_hopistals"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_weather"
+            android:text="Hospital"
+            android:textColor="#D3FFFFFF"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/B_hotel"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_weather"
+            android:text="Hotel"
+            android:textColor="#D3FFFFFF"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/B_pharmacies"
+            android:layout_margin="5dp"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_weather"
+            android:text="Pharmacies"
+            android:textColor="#D3FFFFFF"
+            android:textAllCaps="false"/>
+
+    </LinearLayout>
+
+    <fragment
+        android:layout_below="@id/MidL"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        tools:context=".MapsActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+
+
+</RelativeLayout>

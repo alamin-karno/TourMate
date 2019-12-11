@@ -4,6 +4,7 @@ package com.teamblank.tourmate.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.teamblank.tourmate.R;
 import com.teamblank.tourmate.activity.AddTripActivity;
 import com.teamblank.tourmate.adapters.TripAdapter;
@@ -26,6 +32,7 @@ public class TripFragment extends Fragment {
     private RecyclerView recyclerView;
     private TripAdapter adapter;
     private FloatingActionButton addtripfavicon;
+    private DatabaseReference databaseReference;
     public TripFragment() {
         // Required empty public constructor
     }
@@ -41,16 +48,56 @@ public class TripFragment extends Fragment {
 
         addTrip();
 
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        tripList.add(new Trip("1","Cox's Bazar Tour","Gazipur","Cox's Bazer","29/11/2019","02/12/2019","This our first tour of Tour Bangla Group","5500"));
-        adapter.notifyDataSetChanged();
+        loadData(view);
+
+        fabIconScroll(view);
+
         return view;
+    }
+
+    private void fabIconScroll(View view) {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(dy>0){
+                    addtripfavicon.hide();
+                }
+                else if(dy<0){
+                    addtripfavicon.show();
+                }
+            }
+        });
+    }
+
+    private void loadData(final View view) {
+        DatabaseReference loadRef = databaseReference.child("Trip");
+        loadRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    tripList.clear();
+                    for(DataSnapshot tripData : dataSnapshot.getChildren()){
+                        Trip trip = tripData.getValue(Trip.class);
+                        tripList.add(trip);
+                        //tripList.add(new Trip(trip.getTriptitle(),trip.getStartlocation(),trip.getTriplocation(),trip.getStartdate(),trip.getEnddate(),trip.getTripdetails(),trip.getTripbudget()));
+
+                    }
+                    adapter.notifyDataSetChanged();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void addTrip() {
@@ -66,6 +113,9 @@ public class TripFragment extends Fragment {
     private void init(View view) {
         addtripfavicon = view.findViewById(R.id.addTripFav);
         tripList = new ArrayList<>();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
         recyclerView = view.findViewById(R.id.tripRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new TripAdapter(tripList);

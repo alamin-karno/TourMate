@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -160,19 +161,22 @@ public class AddTripActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter your trip budget.", Toast.LENGTH_SHORT).show();
         }
         else{
-            sendata(view);
+            sentdata(view);
         }
     }
 
-    private void sendata(View view) {
-        String UserId = firebaseAuth.getCurrentUser().getUid();
-        DatabaseReference tripdatabase = databaseReference.child("Trip").child(UserId);
+    private void sentdata(View view) {
+
+        DatabaseReference tripdatabase = databaseReference.child("Trip");
+        String UserId = tripdatabase.push().getKey();
         Trip addTrip = new Trip(UserId,name,starloaction,endloaction,startdate,enddate,tripdetails,budget);
 
-        tripdatabase.setValue(addTrip).addOnCompleteListener(new OnCompleteListener<Void>() {
+        tripdatabase.child(UserId).setValue(addTrip).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 Toast.makeText(AddTripActivity.this, "Successfully added.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddTripActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:background="@color/colorPrimary"
+    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView
+            android:id="@+id/toolbarTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Trips"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#FFF"/>
+
+</androidx.appcompat.widget.Toolbar>

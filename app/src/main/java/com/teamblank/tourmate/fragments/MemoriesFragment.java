@@ -18,6 +18,7 @@ import com.teamblank.tourmate.R;
 public class MemoriesFragment extends Fragment {
 
 
+
     public MemoriesFragment() {
         // Required empty public constructor
     }
@@ -27,7 +28,10 @@ public class MemoriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_memories, container, false);
+        View view = inflater.inflate(R.layout.fragment_memories, container, false);
+
+
+        return  view;
     }
 
 }
