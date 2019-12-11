@@ -1,6 +1,9 @@
 package com.teamblank.tourmate.adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +36,9 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Memory memory = memories.get(position);
 
-        holder.memoryImage.setImageURI(Uri.parse(memory.getMemoryImage()));
+        Bitmap bitmap = stringToBitmap(memory.getMemoryImage());
+
+        holder.memoryImage.setImageBitmap(bitmap);
         holder.memoryTitle.setText(memory.getMemoryTitle());
         holder.memoryDetails.setText(memory.getMemoryDetails());
     }
@@ -51,6 +56,18 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder
             memoryDetails = itemView.findViewById(R.id.memoryDetails);
             memoryTitle = itemView.findViewById(R.id.memoryTitle);
             memoryImage = itemView.findViewById(R.id.memoryImageView);
+        }
+    }
+
+    private Bitmap stringToBitmap(String updateimage) {
+
+        try {
+            byte [] encodeByte= Base64.decode(updateimage,Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch(Exception e) {
+            e.getMessage();
+            return null;
         }
     }
 }

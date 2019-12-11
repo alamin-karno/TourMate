@@ -6,6 +6,12 @@ public class Memory {
     public Memory() {
     }
 
+    public Memory(String memoryTitle, String memoryDetails, String memoryImage) {
+        this.memoryTitle = memoryTitle;
+        this.memoryDetails = memoryDetails;
+        this.memoryImage = memoryImage;
+    }
+
     public Memory(String userID, String memoryTitle, String memoryDetails, String memoryImage) {
         this.userID = userID;
         this.memoryTitle = memoryTitle;

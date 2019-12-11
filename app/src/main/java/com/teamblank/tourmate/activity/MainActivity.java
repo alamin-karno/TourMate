@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         setScrenn();
 
-        defaultFragment();
 
         //profileInfo();
 
@@ -177,9 +176,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void defaultFragment() {
-        replaceFragment(new TripFragment());
-    }
 
     private void setBotoomNavigation() {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
