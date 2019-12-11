@@ -44,12 +44,15 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private String screen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_drawer);
 
         init();
+
+        setScrenn();
 
         defaultFragment();
 
@@ -64,6 +67,18 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.setDrawerListener(toggle);
         toggle.syncState();
 
+    }
+
+    private void setScrenn() {
+        screen = getIntent().getStringExtra("setScreen");
+        if(screen != null){
+            replaceFragment(new MemoriesFragment());
+            bottomNavigationView.setSelectedItemId(R.id.nav_memories);
+        }
+        else {
+            replaceFragment(new TripFragment());
+            bottomNavigationView.setSelectedItemId(R.id.nav_trips);
+        }
     }
 
     private void profileInfo() {
